@@ -1,0 +1,1 @@
+# shri-vashishtha-temple-manali
