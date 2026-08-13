@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shri Vasishtha Temple | Vashisht Village, Manali</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind Config for Custom Colors & Fonts -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        'temple-pink': '#E91E63',     /* Vibrant Pink for accents */
+                        'temple-pink-light': '#FCE4EC',
+                        'temple-green': '#2E7D32',    /* Deep Green for text/headings */
+                        'temple-green-dark': '#1B5E20',
+                        'spring-blue': '#0288D1',     /* Bright Blue for water elements */
+                        'spring-blue-light': '#E1F5FE',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom styles for subtle animations and background gradients */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        .hero-bg {
+            background-image: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.4)), url('https://images.unsplash.com/photo-1626514781789-9a742880c293?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-700 bg-gray-50 antialiased">
+
+    <header class="fixed w-full top-0 z-50 glass-nav shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo/Title -->
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <i class="fa-solid fa-om text-temple-pink text-3xl"></i>
+                    <span class="font-serif font-bold text-xl text-temple-green-dark tracking-wide">Shri Vasishtha</span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-gray-600 hover:text-temple-pink font-medium transition-colors">About</a>
+                    <a href="#history" class="text-gray-600 hover:text-temple-pink font-medium transition-colors">History</a>
+                    <a href="#architecture" class="text-gray-600 hover:text-temple-pink font-medium transition-colors">Architecture</a>
+                    <a href="#springs" class="text-gray-600 hover:text-temple-pink font-medium transition-colors">Hot Springs</a>
+                    <a href="#gallery" class="text-gray-600 hover:text-temple-pink font-medium transition-colors">Gallery</a>
+                    <a href="#nearby" class="text-gray-600 hover:text-temple-pink font-medium transition-colors">Nearby Places</a>
+                    <a href="#visit" class="text-gray-600 hover:text-temple-pink font-medium transition-colors">Plan Visit</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-temple-pink focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="#about" class="block px-3 py-3 text-base font-medium text-gray-700 hover:text-temple-pink hover:bg-temple-pink-light rounded-md">About</a>
+                <a href="#history" class="block px-3 py-3 text-base font-medium text-gray-700 hover:text-temple-pink hover:bg-temple-pink-light rounded-md">History</a>
+                <a href="#architecture" class="block px-3 py-3 text-base font-medium text-gray-700 hover:text-temple-pink hover:bg-temple-pink-light rounded-md">Architecture</a>
+                <a href="#springs" class="block px-3 py-3 text-base font-medium text-gray-700 hover:text-temple-pink hover:bg-temple-pink-light rounded-md">Hot Springs</a>
+                <a href="#gallery" class="block px-3 py-3 text-base font-medium text-gray-700 hover:text-temple-pink hover:bg-temple-pink-light rounded-md">Gallery</a>
+                <a href="#nearby" class="block px-3 py-3 text-base font-medium text-gray-700 hover:text-temple-pink hover:bg-temple-pink-light rounded-md">Nearby Places</a>
+                <a href="#visit" class="block px-3 py-3 text-base font-medium text-gray-700 hover:text-temple-pink hover:bg-temple-pink-light rounded-md">Plan Visit</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative h-screen flex items-center justify-center hero-bg text-center px-4">
+        <div class="max-w-4xl mx-auto text-white mt-16">
+            <span class="block text-sm md:text-base font-medium uppercase tracking-widest text-temple-pink-light mb-4">Vashisht Village, Manali</span>
+            <h1 class="font-serif text-5xl md:text-7xl font-bold mb-6 leading-tight text-white drop-shadow-lg">
+                Find Peace in <br/> Ancient Heritage
+            </h1>
+            <p class="text-lg md:text-xl font-light mb-10 max-w-2xl mx-auto drop-shadow-md text-gray-100">
+                Discover the 4,000-year-old Shri Vasishtha Temple, renowned for its Kath Kuni architecture and therapeutic natural hot springs.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#about" class="bg-temple-pink hover:bg-pink-600 text-white font-semibold py-3 px-8 rounded-full transition duration-300 shadow-lg transform hover:-translate-y-1">
+                    Explore the Temple
+                </a>
+                <a href="#visit" class="bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/50 text-white font-semibold py-3 px-8 rounded-full transition duration-300 shadow-lg transform hover:-translate-y-1">
+                    Visitor Info
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll Down Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#about" class="text-white/80 hover:text-temple-pink-light transition-colors">
+                <i class="fa-solid fa-chevron-down text-3xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 space-y-24">
+        
+        <!-- About Section -->
+        <section id="about" class="reveal-on-scroll grid md:grid-cols-2 gap-12 items-center scroll-mt-24">
+            <div>
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-temple-green-dark mb-6">Welcome to Vashisht Village</h2>
+                <div class="w-20 h-1 bg-temple-pink mb-6"></div>
+                <p class="text-lg text-gray-600 leading-relaxed mb-6">
+                    Located just 3 kilometers from the bustling town of Manali, the Shri Vasishtha Temple offers a serene escape. Perched across the beautiful Beas River, this ancient shrine perfectly blends profound history, stunning wooden architecture, and the deeply relaxing embrace of natural hot springs.
+                </p>
+                <p class="text-lg text-gray-600 leading-relaxed">
+                    Whether you are seeking spiritual clarity, historical insights, or physical rejuvenation, this sacred space provides a tranquil retreat from the modern world.
+                </p>
+            </div>
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1596895111956-bf570d5885c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Beautiful landscape of Manali near the temple" class="rounded-2xl shadow-2xl object-cover h-[400px] w-full border-4 border-white">
+                <!-- Decorative Element -->
+                <div class="absolute -bottom-6 -left-6 w-24 h-24 bg-temple-pink-light rounded-full -z-10"></div>
+                <div class="absolute -top-6 -right-6 w-32 h-32 border-2 border-spring-blue rounded-full -z-10"></div>
+            </div>
+        </section>
+
+        <!-- History & Legends Section -->
+        <section id="history" class="reveal-on-scroll scroll-mt-24 bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
+            <div class="grid md:grid-cols-5 h-full">
+                <div class="md:col-span-2 bg-temple-green p-10 flex flex-col justify-center text-white relative overflow-hidden">
+                    <i class="fa-solid fa-scroll text-8xl text-white/10 absolute -right-4 -bottom-4"></i>
+                    <h3 class="font-serif text-3xl font-bold mb-4 relative z-10">History & Legends</h3>
+                    <p class="text-spring-blue-light relative z-10">The story of a great sage and a tragic loss that turned into spiritual rebirth.</p>
+                </div>
+                <div class="md:col-span-3 p-10 lg:p-16 flex items-center bg-gray-50">
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        The temple is dedicated to <strong class="text-temple-pink">Sage Vashisht</strong>, one of the seven great sages (Saptarishis) of Hindu mythology and the revered chief teacher (guru) of Lord Rama. 
+                        <br><br>
+                        Legend holds that after facing an immense personal tragedy—the loss of his children—the grieving sage attempted to end his life in a river. However, the river refused to let him drown and untied his bonds. He later meditated at this very spot. The village and the nearby river (which was later named Beas, meaning "to untie") provided him with a renewed sense of peace and liberation.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Architecture Section -->
+        <section id="architecture" class="reveal-on-scroll scroll-mt-24 grid md:grid-cols-2 gap-12 items-center">
+            <div class="order-2 md:order-1 relative">
+                <img src="https://images.unsplash.com/photo-1563810007802-540c115456f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kath Kuni Architecture detail" class="rounded-2xl shadow-2xl object-cover h-[450px] w-full border-4 border-white">
+                <div class="absolute -bottom-4 -right-4 w-20 h-20 bg-spring-blue-light rounded-full -z-10"></div>
+            </div>
+            <div class="order-1 md:order-2">
+                <div class="inline-flex items-center justify-center p-3 bg-temple-pink-light text-temple-pink rounded-xl mb-6 shadow-sm">
+                    <i class="fa-solid fa-vihara text-2xl"></i>
+                </div>
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-temple-green-dark mb-6">Kath Kuni Architecture</h2>
+                <p class="text-lg text-gray-600 leading-relaxed mb-6">
+                    The shrine stands as a living testament to the traditional Himalayan <strong class="text-temple-green">"Kath Kuni"</strong> architectural style. This ingenious, earthquake-resistant building method utilizes alternating layers of interlocking stone and wooden logs—completely without cement or mortar.
+                </p>
+                <ul class="space-y-4">
+                    <li class="flex items-start">
+                        <i class="fa-solid fa-check text-temple-pink mt-1.5 mr-3"></i>
+                        <span class="text-gray-600"><strong>Intricate Carvings:</strong> The interior features exquisitely detailed wooden carvings depicting ancient tales.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fa-solid fa-check text-temple-pink mt-1.5 mr-3"></i>
+                        <span class="text-gray-600"><strong>Sacred Deity:</strong> Houses a beautiful black granite statue of Sage Vashisht.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fa-solid fa-check text-temple-pink mt-1.5 mr-3"></i>
+                        <span class="text-gray-600"><strong>Timeless Durability:</strong> The structure has withstood the harsh Himalayan winters for centuries.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Hot Springs Section -->
+        <section id="springs" class="reveal-on-scroll scroll-mt-24 bg-spring-blue-light rounded-3xl p-8 md:p-16 relative overflow-hidden border border-blue-100">
+            <!-- Decorative water blobs -->
+            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-white rounded-full mix-blend-overlay filter blur-xl opacity-60"></div>
+            <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-64 h-64 bg-temple-pink-light rounded-full mix-blend-multiply filter blur-2xl opacity-40"></div>
+            
+            <div class="relative z-10 text-center max-w-3xl mx-auto mb-12">
+                <i class="fa-solid fa-water text-4xl text-spring-blue mb-4"></i>
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-temple-green-dark mb-4">The Healing Hot Springs</h2>
+                <h3 class="text-xl text-temple-pink font-medium mb-6">Vashisht Kund</h3>
+                <p class="text-lg text-gray-700">
+                    One of the biggest draws to the village is the natural hot water springs. Emerging naturally from the earth, these waters are rich in sulfur and minerals, providing a deeply therapeutic experience against the backdrop of the snowy Himalayas.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 relative z-10">
+                <!-- Feature 1 -->
+                <div class="bg-white rounded-2xl p-6 shadow-md border border-white hover:shadow-xl hover:-translate-y-1 transition-all text-center group">
+                    <div class="w-16 h-16 mx-auto bg-temple-green-dark text-white rounded-full flex items-center justify-center mb-4 text-2xl group-hover:bg-temple-green transition-colors">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+                    <h4 class="font-bold text-lg text-temple-green-dark mb-2">Healing Properties</h4>
+                    <p class="text-gray-600 text-sm">The sulfur-rich water is widely believed to help cure skin diseases and soothe aching, tired muscles after a long trek.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="bg-white rounded-2xl p-6 shadow-md border border-white hover:shadow-xl hover:-translate-y-1 transition-all text-center group">
+                    <div class="w-16 h-16 mx-auto bg-temple-pink text-white rounded-full flex items-center justify-center mb-4 text-2xl group-hover:bg-pink-600 transition-colors">
+                        <i class="fa-solid fa-temperature-half"></i>
+                    </div>
+                    <h4 class="font-bold text-lg text-temple-green-dark mb-2">Perfect Temperature</h4>
+                    <p class="text-gray-600 text-sm">The water naturally maintains a temperature between 40°C to 45°C, making it incredibly comfortable even in freezing winters.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="bg-white rounded-2xl p-6 shadow-md border border-white hover:shadow-xl hover:-translate-y-1 transition-all text-center group">
+                    <div class="w-16 h-16 mx-auto bg-spring-blue text-white rounded-full flex items-center justify-center mb-4 text-2xl group-hover:bg-blue-600 transition-colors">
+                        <i class="fa-solid fa-bath"></i>
+                    </div>
+                    <h4 class="font-bold text-lg text-temple-green-dark mb-2">Modern Facilities</h4>
+                    <p class="text-gray-600 text-sm">The government has constructed separate, safe bathing tanks for men and women, equipped with Turkish-style showers for privacy.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="reveal-on-scroll scroll-mt-24">
+            <div class="text-center mb-12">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-temple-green-dark mb-4">Glimpses of Serenity</h2>
+                <div class="w-20 h-1 bg-temple-pink mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Take a visual journey through the ancient architecture, sacred surroundings, and natural beauty of Vashisht Village.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+                <!-- Gallery Image 1 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 aspect-square sm:aspect-[4/3]">
+                    <img src="https://images.unsplash.com/photo-1626514781789-9a742880c293?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Scenic views of Manali" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-700 ease-in-out">
+                    <div class="absolute inset-0 bg-gradient-to-t from-temple-green-dark/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <span class="text-white font-medium text-lg drop-shadow-md">Himalayan Valleys</span>
+                    </div>
+                </div>
+                
+                <!-- Gallery Image 2 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 aspect-square sm:aspect-[4/3]">
+                    <img src="https://images.unsplash.com/photo-1596895111956-bf570d5885c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Beas River" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-700 ease-in-out">
+                    <div class="absolute inset-0 bg-gradient-to-t from-spring-blue/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <span class="text-white font-medium text-lg drop-shadow-md">The Sacred Beas River</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Image 3 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 aspect-square sm:aspect-[4/3]">
+                    <img src="https://images.unsplash.com/photo-1563810007802-540c115456f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Wooden Temple Details" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-700 ease-in-out">
+                    <div class="absolute inset-0 bg-gradient-to-t from-temple-pink/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <span class="text-white font-medium text-lg drop-shadow-md">Kath Kuni Woodwork</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Image 4 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 aspect-square sm:aspect-[4/3]">
+                    <img src="https://images.unsplash.com/photo-1623126908029-58cb08a2b272?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Spiritual atmosphere" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-700 ease-in-out">
+                    <div class="absolute inset-0 bg-gradient-to-t from-temple-green-dark/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <span class="text-white font-medium text-lg drop-shadow-md">Spiritual Awakening</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Image 5 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 aspect-square sm:aspect-[4/3]">
+                    <img src="https://images.unsplash.com/photo-1574676451676-e91054b8a4f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Himachal Mountains" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-700 ease-in-out">
+                    <div class="absolute inset-0 bg-gradient-to-t from-spring-blue/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <span class="text-white font-medium text-lg drop-shadow-md">Snow-Capped Peaks</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Image 6 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 aspect-square sm:aspect-[4/3]">
+                    <img src="https://images.unsplash.com/photo-1533050487297-09b450131914?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Peaceful nature" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-700 ease-in-out">
+                    <div class="absolute inset-0 bg-gradient-to-t from-temple-pink/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <span class="text-white font-medium text-lg drop-shadow-md">Tranquil Retreat</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Must Visit Places Nearby Section -->
+        <section id="nearby" class="reveal-on-scroll scroll-mt-24 py-8">
+            <div class="text-center mb-12">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-temple-green-dark mb-4">Must Visit Places Nearby</h2>
+                <div class="w-20 h-1 bg-spring-blue mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Extend your journey by exploring these popular and sacred destinations located just a short distance from Vashisht Village.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Nearby Place 1: Jogini Falls -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 hover:-translate-y-2 transition-transform duration-300 group">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1596483489814-16a75a7ffab8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Waterfall representing Jogini Falls" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-temple-green-dark shadow-sm">
+                            <i class="fa-solid fa-star text-yellow-400 mr-1"></i> 4.6
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-2xl font-bold text-gray-800 mb-2">Jogini Falls</h3>
+                        <p class="text-sm text-temple-pink font-medium mb-3"><i class="fa-solid fa-location-dot mr-1"></i> ~2 km trek from Vashisht</p>
+                        <p class="text-gray-600 text-sm mb-4">
+                            A picturesque waterfall in a remote, tranquil setting. It takes a short, beautiful trek through pine trees and apple orchards to reach this sacred site.
+                        </p>
+                        <a href="https://maps.google.com/?cid=17192517173995747844" target="_blank" class="inline-flex items-center text-spring-blue font-semibold hover:text-blue-700 transition-colors">
+                            View on Map <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Nearby Place 2: Hadimba Devi Temple -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 hover:-translate-y-2 transition-transform duration-300 group">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pine forest representing Hadimba surroundings" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-temple-green-dark shadow-sm">
+                            <i class="fa-solid fa-star text-yellow-400 mr-1"></i> 4.6
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-2xl font-bold text-gray-800 mb-2">Hadimba Devi Temple</h3>
+                        <p class="text-sm text-temple-pink font-medium mb-3"><i class="fa-solid fa-location-dot mr-1"></i> ~5 km from Vashisht</p>
+                        <p class="text-gray-600 text-sm mb-4">
+                            A unique 16th-century wooden temple dedicated to Hadimba Devi, surrounded by a gorgeous, ancient cedar forest (Dhungiri Van Vihar).
+                        </p>
+                        <a href="https://maps.google.com/?cid=3290482383344535452" target="_blank" class="inline-flex items-center text-spring-blue font-semibold hover:text-blue-700 transition-colors">
+                            View on Map <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Nearby Place 3: Van Vihar National Park -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 hover:-translate-y-2 transition-transform duration-300 group">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1543884395-5ff15e4f4fb8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="River in forest representing Van Vihar" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-temple-green-dark shadow-sm">
+                            <i class="fa-solid fa-star text-yellow-400 mr-1"></i> 4.2
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-2xl font-bold text-gray-800 mb-2">Van Vihar Park</h3>
+                        <p class="text-sm text-temple-pink font-medium mb-3"><i class="fa-solid fa-location-dot mr-1"></i> ~4 km from Vashisht</p>
+                        <p class="text-gray-600 text-sm mb-4">
+                            A lovely, tree-filled riverfront setting perfect for a relaxing stroll. It features towering Deodar trees and offers boating on a small artificial lake.
+                        </p>
+                        <a href="https://maps.google.com/?cid=289773148519105504" target="_blank" class="inline-flex items-center text-spring-blue font-semibold hover:text-blue-700 transition-colors">
+                            View on Map <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visitor Information Section -->
+        <section id="visit" class="reveal-on-scroll scroll-mt-24">
+            <div class="text-center mb-12">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-temple-green-dark mb-4">Plan Your Visit</h2>
+                <div class="w-20 h-1 bg-spring-blue mx-auto"></div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Map Left Side -->
+                <div class="w-full h-[350px] lg:h-[400px] rounded-3xl overflow-hidden shadow-xl border-4 border-white relative group">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d481.6451880339682!2d77.18777673229057!3d32.26497689686656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3904878cbe6d862d%3A0x982fae511b777c65!2sShri%20Vasishtha%20Temple%2C%20Vashisht%20Village!5e1!3m2!1sen!2sin!4v1786618334814!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" class="absolute inset-0 w-full h-full z-10 transition-all duration-500"></iframe>
+                    <!-- Map Placeholder Skeleton -->
+                    <div class="absolute inset-0 bg-gray-100 flex items-center justify-center -z-0">
+                         <i class="fa-solid fa-map-location-dot text-4xl text-gray-300 animate-pulse"></i>
+                    </div>
+                </div>
+
+                <!-- Guide Right Side -->
+                <div class="flex flex-col gap-6">
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <!-- Info Card 1 -->
+                        <div class="bg-white p-6 rounded-2xl shadow-md border-t-4 border-temple-green hover:shadow-lg transition-shadow">
+                            <i class="fa-regular fa-clock text-3xl text-temple-green mb-4"></i>
+                            <h4 class="font-bold text-gray-800 text-lg mb-2">Timings</h4>
+                            <p class="text-gray-600">Open every day<br><strong class="text-temple-green-dark">7:00 AM to 9:00 PM</strong></p>
+                        </div>
+                        
+                        <!-- Info Card 2 -->
+                        <div class="bg-white p-6 rounded-2xl shadow-md border-t-4 border-temple-pink hover:shadow-lg transition-shadow">
+                            <i class="fa-solid fa-ticket text-3xl text-temple-pink mb-4"></i>
+                            <h4 class="font-bold text-gray-800 text-lg mb-2">Entry Fee</h4>
+                            <p class="text-gray-600">Completely <strong class="text-temple-pink">Free</strong> for both the temple entry and the hot spring baths.</p>
+                        </div>
+
+                        <!-- Info Card 3 -->
+                        <div class="bg-white p-6 rounded-2xl shadow-md border-t-4 border-spring-blue hover:shadow-lg transition-shadow">
+                            <i class="fa-regular fa-calendar-check text-3xl text-spring-blue mb-4"></i>
+                            <h4 class="font-bold text-gray-800 text-lg mb-2">Best Time</h4>
+                            <p class="text-gray-600">Early mornings are recommended to experience peace and avoid heavy tourist crowds.</p>
+                        </div>
+
+                        <!-- Info Card 4 -->
+                        <div class="bg-white p-6 rounded-2xl shadow-md border-t-4 border-temple-green hover:shadow-lg transition-shadow">
+                            <i class="fa-solid fa-suitcase text-3xl text-temple-green mb-4"></i>
+                            <h4 class="font-bold text-gray-800 text-lg mb-2">What to Bring</h4>
+                            <p class="text-gray-600">Towel and change of clothes for bathing. Please dress modestly out of respect.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Download Action -->
+                    <div class="text-center bg-temple-green-dark rounded-2xl p-8 shadow-xl relative overflow-hidden mt-2 h-full flex flex-col justify-center">
+                        <!-- Decorative elements for banner -->
+                        <div class="absolute -top-10 -right-10 w-32 h-32 bg-temple-pink rounded-full opacity-20"></div>
+                        <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-spring-blue rounded-full opacity-20"></div>
+                        
+                        <h4 class="font-serif text-2xl font-bold text-white mb-2 relative z-10">Keep this guide handy</h4>
+                        <p class="text-spring-blue-light mb-6 text-sm max-w-md mx-auto relative z-10">Download our one-page digital pamphlet summarizing the temple's history, architecture, and timings for your trip.</p>
+                        <div class="relative z-10">
+                            <button class="bg-temple-pink hover:bg-pink-600 text-white font-semibold py-3 px-8 rounded-full transition duration-300 shadow-md transform hover:scale-105">
+                                <i class="fa-solid fa-download mr-2"></i> Download Pamphlet (PDF)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12 border-t-4 border-temple-pink">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 items-center">
+                
+                <!-- Brand -->
+                <div class="text-center md:text-left">
+                    <div class="flex items-center justify-center md:justify-start gap-2 mb-4">
+                        <i class="fa-solid fa-om text-temple-pink text-2xl"></i>
+                        <span class="font-serif font-bold text-2xl text-white">Shri Vasishtha</span>
+                    </div>
+                    <p class="text-sm text-gray-400 max-w-xs mx-auto md:mx-0">
+                        A 4000-year-old spiritual haven in the heart of the Himalayas. Discover peace, history, and healing.
+                    </p>
+                </div>
+
+                <!-- Disclaimer & Support -->
+                <div class="text-center flex flex-col items-center justify-center">
+                    <h5 class="text-white font-semibold mb-4 tracking-wider uppercase text-sm">Disclaimer</h5>
+                    <p class="text-sm text-gray-400 mb-6 max-w-xs mx-auto">
+                        This is an independent information portal designed to guide tourists. It is not officially affiliated with the temple trust.
+                    </p>
+                    <button class="bg-spring-blue hover:bg-blue-600 text-white font-semibold py-2.5 px-6 rounded-full transition duration-300 shadow-md flex items-center gap-2 transform hover:-translate-y-1">
+                        <i class="fa-solid fa-mug-hot"></i> Donate to Developer
+                    </button>
+                </div>
+
+                <!-- Contact & Credits -->
+                <div class="text-center md:text-right">
+                    <h5 class="text-white font-semibold mb-4 tracking-wider uppercase text-sm">Connect</h5>
+                    <div class="flex justify-center md:justify-end space-x-4 mb-6">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-spring-blue hover:text-white transition-colors">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-temple-pink hover:text-white transition-colors">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-temple-green hover:text-white transition-colors">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- Mahsua Technology Plug (Subtle) -->
+                    <p class="text-xs text-gray-500">
+                        Designed & Developed by <br>
+                        <a href="#" class="text-gray-400 hover:text-temple-pink font-medium transition-colors">Mahsua Technology</a>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-500">
+                <p>&copy; 2026 Shri Vasishtha Temple Information Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileLinks = menu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal-on-scroll');
+
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            revealElements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                const elementVisible = 100; // Trigger point
+
+                if (elementTop < windowHeight - elementVisible) {
+                    el.classList.add('is-visible');
+                }
+            });
+        };
+
+        // Add scroll listener for animations
+        window.addEventListener('scroll', revealOnScroll);
+        
+        // Trigger once on load
+        revealOnScroll();
+
+        // Navbar background adjustment on scroll
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-md');
+                header.classList.replace('glass-nav', 'bg-white');
+            } else {
+                header.classList.remove('shadow-md');
+                header.classList.replace('bg-white', 'glass-nav');
+            }
+        });
+    </script>
+</body>
+</html>
